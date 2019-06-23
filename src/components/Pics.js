@@ -6,19 +6,11 @@ class Pics extends Component {
   render() {
     return (
       <div className="pics">
-          <div className="picture">
-          {this.props.pictures.map((pic, index) => {
-            return (
-              <Picture
-                key={index}
-                arrayIndex={index}
-                pic={pic}
-                currentArray='pictures'
-                handleDelete={this.props.handleDelete}
-              />
-            )
-          })}
-          </div>
+        { this.props.currentView === 'pics' ?
+          <div>"this is the pics view"</div> :
+          <div>"this is the liked view"</div>
+        }
+        <Picture />
       </div>
     )
   }

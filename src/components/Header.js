@@ -12,9 +12,14 @@ class Header extends Component {
             <input type="text" placeholder="#search"></input>
           </div>
           <div className="functions">
-            <a>Discover</a>
-            <a>Likes</a>
-            <a>Profile</a>
+            <ul>
+              <li onClick={() => {this.props.handleView('pics')}}>
+                Discover
+              </li>
+              <li onClick={() => {this.props.handleView('liked')}}>
+                Liked Posts
+              </li>
+            </ul>
           </div>
         </header>
         <hr/>

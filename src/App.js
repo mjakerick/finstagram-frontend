@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './components/Form';
 import Header from './components/Header';
 import Pics from './components/Pics';
 import './App.css';
@@ -10,7 +11,8 @@ class App extends Component {
     super(props)
 		this.state = {
 			currentView: 'pics',
-			pictures: []
+			pictures: [],
+			likedPictures: [],
 		}
 		this.handleCreatePic = this.handleCreatePic.bind(this)
     this.handleView = this.handleView.bind(this)
@@ -20,6 +22,31 @@ class App extends Component {
     this.updateArray = this.updateArray.bind(this)
     this.removeFromArray = this.removeFromArray.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+		this.handleCheck = this.handleCheck.bind(this)
+  }
+
+	handleCheck(pic, arrayIndex, currentArray){
+    pic.liked = !pic.liked
+    console.log(pic, arrayIndex, currentArray);
+    fetch(baseAPI + pic.id, {
+      body: JSON.stringify(pic),
+      method: 'PUT' ,
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then ( updatedPic => updatedPic.json())
+    .then(jData => {
+      this.removeFromArray(currentArray, arrayIndex)
+      if(currentArray === 'pictures') {
+        this.updateArray(jData, 'likedPictures')
+      } else {
+        this.updateArray(jData, 'pictures')
+      }
+      this.fetchPics()
+    })
+    .catch (err => console.log('this is an error', err))
   }
 
 	handleCreatePic(pic) {
@@ -83,17 +110,23 @@ class App extends Component {
 
   sortPics(pics){
     let pictures = []
-    pics.forEach(pic => {
-      pictures.push(pic)
-    })
-    this.setPics(pictures)
+		let likedPictures = []
+		pictures.forEach((pic) => {
+	    if(pic.liked) {
+	      likedPictures.push(pic)
+	    } else {
+	      pictures.push(pic)
+	    }
+	  })
+    this.setPics(likedPictures, pictures)
   }
 
-  setPics(pictures){
-    this.setState({
-      pictures : pictures
-    })
-  }
+	setPics(liked, pics) {
+		this.setState({
+			likedPictures: liked,
+			pictures: pics
+		})
+	}
 
   componentDidMount(){
     this.fetchPics()
@@ -102,8 +135,14 @@ class App extends Component {
   render () {
     return (
       <div className="app-content">
-        <Header />
-				<Pics />
+        <Header
+					currentView={this.state.currentView}
+					handleView={this.handleView}
+				/>
+				<Form />
+				<Pics
+					currentView={this.state.currentView}
+				/>
       </div>
     )
   }
