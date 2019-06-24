@@ -4,8 +4,6 @@ import Header from './components/Header';
 import Pics from './components/Pics';
 import './App.css';
 
-const baseAPI = 'http://localhost:3000/pics/'
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -27,8 +25,7 @@ class App extends Component {
 
 	handleCheck(pic, arrayIndex, currentArray){
     pic.liked = !pic.liked
-    console.log(pic, arrayIndex, currentArray);
-    fetch(baseAPI + pic.id, {
+    fetch(`http://localhost:3000/pics/${pic.id}`, {
       body: JSON.stringify(pic),
       method: 'PUT' ,
       headers: {
@@ -50,8 +47,7 @@ class App extends Component {
   }
 
 	handleCreatePic(pic) {
-    console.log(pic);
-    fetch(baseAPI, {
+    fetch('http://localhost:3000/pics', {
       body:JSON.stringify(pic),
       method:'POST',
       headers: {
@@ -63,7 +59,7 @@ class App extends Component {
     .then( jData => {
       this.updateArray(jData, 'pictures')
       this.handleView('pics')
-      this.fetchPets()
+      this.fetchPics()
     })
     .catch ( err => console.log('this is an error', err))
   }
@@ -84,7 +80,7 @@ class App extends Component {
   }
 
   fetchPics() {
-    fetch(baseAPI)
+    fetch('http://localhost:3000/pics')
     .then (data => data.json())
     .then (jData => {
       console.log('this is jData', jData)
@@ -99,7 +95,7 @@ class App extends Component {
   }
 
   handleDelete(picId, arrayIndex, currentArray) {
-      fetch(`${baseAPI}${picId}`, {
+      fetch(`http://localhost:3000/pics/${picId}`, {
         method: 'DELETE'
       })
       .then(data => {
@@ -111,7 +107,7 @@ class App extends Component {
   sortPics(pics){
     let pictures = []
 		let likedPictures = []
-		pictures.forEach((pic) => {
+		pics.forEach((pic) => {
 	    if(pic.liked) {
 	      likedPictures.push(pic)
 	    } else {
@@ -139,9 +135,15 @@ class App extends Component {
 					currentView={this.state.currentView}
 					handleView={this.handleView}
 				/>
-				<Form />
+				<Form
+					handleCreatePic={this.handleCreatePic}
+				/>
 				<Pics
 					currentView={this.state.currentView}
+					pictures={this.state.pictures}
+					likedPictures={this.state.likedPictures}
+					handleCheck={this.handleCheck}
+					handleDelete={this.handleDelete}
 				/>
       </div>
     )
