@@ -18,32 +18,9 @@ class App extends Component {
     this.sortPics = this.sortPics.bind(this)
     this.setPics = this.setPics.bind(this)
     this.updateArray = this.updateArray.bind(this)
+		this.handleCheck = this.handleCheck.bind(this)
     this.removeFromArray = this.removeFromArray.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-		this.handleCheck = this.handleCheck.bind(this)
-  }
-
-	handleCheck(pic, arrayIndex, currentArray){
-    pic.liked = !pic.liked
-    fetch(`http://localhost:3000/pics/${pic.id}`, {
-      body: JSON.stringify(pic),
-      method: 'PUT' ,
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then ( updatedPic => updatedPic.json())
-    .then(jData => {
-      this.removeFromArray(currentArray, arrayIndex)
-      if(currentArray === 'pictures') {
-        this.updateArray(jData, 'likedPictures')
-      } else {
-        this.updateArray(jData, 'pictures')
-      }
-      this.fetchPics()
-    })
-    .catch (err => console.log('this is an error', err))
   }
 
 	handleCreatePic(pic) {
@@ -68,6 +45,29 @@ class App extends Component {
     this.setState( prevState => ({
       [array]:[...prevState[array],pic]
     }))
+  }
+
+	handleCheck(pic, arrayIndex, currentArray){
+    pic.liked = !pic.liked
+    fetch('http://localhost:3000/pics/' + pic.id, {
+      body: JSON.stringify(pic),
+      method: 'PUT' ,
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then ( updatedPic => updatedPic.json())
+    .then(jData => {
+      this.removeFromArray(currentArray, arrayIndex)
+      if(currentArray === 'pictures') {
+        this.updateArray(jData, 'likedPictures')
+      } else {
+        this.updateArray(jData, 'pictures')
+      }
+      this.fetchPics()
+    })
+    .catch (err => console.log('this is an error', err))
   }
 
   removeFromArray(array, arrayIndex) {
@@ -108,7 +108,7 @@ class App extends Component {
     let pictures = []
 		let likedPictures = []
 		pics.forEach((pic) => {
-	    if(pic.liked) {
+	    if(pic.liked === true) {
 	      likedPictures.push(pic)
 	    } else {
 	      pictures.push(pic)
@@ -140,6 +140,7 @@ class App extends Component {
 				/>
 				<Pics
 					currentView={this.state.currentView}
+					handleView={this.handleView}
 					pictures={this.state.pictures}
 					likedPictures={this.state.likedPictures}
 					handleCheck={this.handleCheck}

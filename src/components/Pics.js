@@ -16,6 +16,7 @@ class Pics extends Component {
                   arrayIndex={index}
                   pic={pic}
                   handleCheck={this.props.handleCheck}
+                  currentArray='pictures'
                   handleDelete={this.props.handleDelete}
                 />
               )
@@ -30,6 +31,7 @@ class Pics extends Component {
                   arrayIndex={index}
                   pic={pic}
                   handleCheck={this.props.handleCheck}
+                  currentArray='likedPictures'
                   handleDelete={this.props.handleDelete}
                 />
               )
