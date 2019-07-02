@@ -1,72 +1,24 @@
-<<<<<<< HEAD
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Finstagram
 
-## Available Scripts
+## About
+The goal for this project was to create an app similar to something like instagram where users can post pictures and like pictures. The level of complexity I originally wanted only really works with user authentication and I really struggled to set that up within the timeframe for this project so I had to scrap the project and essentially restart to meet my deadline.
 
-In the project directory, you can run:
+## Technologies Used
+- Rails
+- React
+- PostgreSQL
+- Heroku
+- CSS Flexbox
+- CSS Grid
 
-### `npm start`
+I created an API server using Rails and PostgreSQL. I then pushed the API up to Heroku and used it as the backend for my React app. The React application was then used as my frontend and allowed me to interact with the backend by pulling and storing data from that server.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Struggles
+So many struggles... I struggled with the database most of all. The boolean values of liked in my database were displaying as 't' and 'f' which caused me to have to change the way my app read the boolean which was an easy enough fix, but I made a silly typing error where a missed a single ' and it broke my update and delete routes. I had assumed that the routes were still working because I had tested them before and they were working so I thought the problem was related to the 't' and 'f' boolean values in my table. The only error I was receiving was an internal server error 500, which is a blanket error code saying "something is wrong with your server..."
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Next I struggled with deploying my api to heroku because when you deploy the api, it doesn't deploy with the database, table, and data. I found a couple of solutions that I tried including migrating the database and using an external application to manipulate the database, but I was overcomplicating the problem. I ended up being able to manipulate the database using heroku commands in the command line. This didn't work initially, but it worked after I cleared my heroku database and restarted it.
 
-### `npm test`
+## Improvements
+There are many things I would like to add to make this project more presentable. User authentication is by far the number one thing for this project because everything else that the app is supposed to do relies on users and sessions. I would like to add functions that allow users to follow other users, functions to search for other users, a function to show your liked posts, edit your profile and edit your posts. So many things could make this app great and I plan to make those changes when I get a free moment.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-=======
-# finstagram
->>>>>>> d91fe5fe6843d203c21e30108c403ffc415e2f68
+Link to our project hosted on Heroku: https://paws-and-find-front.herokuapp.com/
