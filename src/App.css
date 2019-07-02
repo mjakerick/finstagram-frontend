@@ -1,10 +1,125 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 2% 25% auto 25% 2%;
+  grid-template-rows: 33.3333% 33.3333% 33.3333%;
   padding: 0 5px;
+}
+
+.title {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  align-self: center;
+  text-align: left;
+}
+
+.search {
+  grid-column-start: 3;
+  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: center;
+  align-self: center;
+}
+
+.functions {
+  grid-column-start: 4;
+  grid-row-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: right;
+  align-self: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.lookin-gud h2 {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
 }
 
 .functions a {
   padding: 0 5px;
+}
+
+.app-content {
+
+}
+
+.pic-stuff {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pics {
+  flex-direction: row;
+}
+
+.pic {
+  border: 2px solid black;
+  width: 340px;
+  height: 400px;
+  text-align: center;
+  margin-bottom: 2%;
+  margin-right: 5px;
+}
+
+.pic img {
+  height: 200px;
+  width: 300px;
+}
+
+.pic-actions img {
+  height: 20px;
+  width: 20px;
+}
+
+.pic-actions img:hover {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+}
+
+.pic-actions {
+  margin: 5px;
+}
+
+button {
+  border-radius: 45px;
+}
+
+button:hover {
+  border-radius: 45px;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+input {
+  border-radius: 45px;
+  border: 0.5px solid black;
+  height: 25px;
+  width: 300px;
+  padding-left: 10px;
+  margin: 0 3px;
+}
+
+li:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+.name {
+  padding: 10px;
+}
+
+.desc {
+  padding: 10px;
 }

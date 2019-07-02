@@ -7,35 +7,39 @@ class Pics extends Component {
     return (
       <div className="pics">
         { this.props.currentView === 'pics' ?
-          <div>
+          <div className="lookin-gud">
             <h2>New Posts</h2>
-            {this.props.pictures.map((pic, index) => {
-              return (
-                <Picture
-                  key={index}
-                  arrayIndex={index}
-                  pic={pic}
-                  handleCheck={this.props.handleCheck}
-                  currentArray='pictures'
-                  handleDelete={this.props.handleDelete}
-                />
-              )
-            })}
+            <div className="pic-stuff">
+              {this.props.pictures.map((pic, index) => {
+                return (
+                  <Picture
+                    key={index}
+                    arrayIndex={index}
+                    pic={pic}
+                    handleCheck={this.props.handleCheck}
+                    currentArray='pictures'
+                    handleDelete={this.props.handleDelete}
+                  />
+                )
+              })}
+            </div>
           </div> :
-          <div>
+          <div className="lookin-gud">
             <h2>Liked Posts</h2>
-            {this.props.likedPictures.map((pic, index) => {
-              return (
-                <Picture
-                  key={index}
-                  arrayIndex={index}
-                  pic={pic}
-                  handleCheck={this.props.handleCheck}
-                  currentArray='likedPictures'
-                  handleDelete={this.props.handleDelete}
-                />
-              )
-            })}
+            <div className="pic-stuff">
+              {this.props.likedPictures.map((pic, index) => {
+                return (
+                  <Picture
+                    key={index}
+                    arrayIndex={index}
+                    pic={pic}
+                    handleCheck={this.props.handleCheck}
+                    currentArray='likedPictures'
+                    handleDelete={this.props.handleDelete}
+                  />
+                )
+              })}
+            </div>
           </div>
         }
       </div>

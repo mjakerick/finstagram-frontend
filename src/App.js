@@ -24,7 +24,7 @@ class App extends Component {
   }
 
 	handleCreatePic(pic) {
-    fetch('http://localhost:3000/pics', {
+    fetch('https://finstagram-rails.herokuapp.com/pics', {
       body:JSON.stringify(pic),
       method:'POST',
       headers: {
@@ -49,7 +49,7 @@ class App extends Component {
 
 	handleCheck(pic, arrayIndex, currentArray){
     pic.liked = !pic.liked
-    fetch('http://localhost:3000/pics/' + pic.id, {
+    fetch('https://finstagram-rails.herokuapp.com/pics/' + pic.id, {
       body: JSON.stringify(pic),
       method: 'PUT' ,
       headers: {
@@ -80,7 +80,7 @@ class App extends Component {
   }
 
   fetchPics() {
-    fetch('http://localhost:3000/pics')
+    fetch('https://finstagram-rails.herokuapp.com/pics')
     .then (data => data.json())
     .then (jData => {
       console.log('this is jData', jData)
@@ -95,7 +95,7 @@ class App extends Component {
   }
 
   handleDelete(picId, arrayIndex, currentArray) {
-      fetch(`http://localhost:3000/pics/${picId}`, {
+      fetch(`https://finstagram-rails.herokuapp.com/pics/${picId}`, {
         method: 'DELETE'
       })
       .then(data => {

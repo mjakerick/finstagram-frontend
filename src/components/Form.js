@@ -37,6 +37,7 @@ class Form extends Component {
   render() {
     return (
       <div className="form" onSubmit={this.handleSubmit}>
+      <h2>Create New Post</h2>
         <form>
           <input id="name" type='text' value={this.state.name} onChange={this.handleChange} placeholder="Username"></input>
           <input id="picture" type='text' value={this.state.picture} onChange={this.handleChange} placeholder="Photo"></input>
