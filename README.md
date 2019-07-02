@@ -19,6 +19,8 @@ So many struggles... I struggled with the database most of all. The boolean valu
 Next I struggled with deploying my api to heroku because when you deploy the api, it doesn't deploy with the database, table, and data. I found a couple of solutions that I tried including migrating the database and using an external application to manipulate the database, but I was overcomplicating the problem. I ended up being able to manipulate the database using heroku commands in the command line. This didn't work initially, but it worked after I cleared my heroku database and restarted it.
 
 ## Improvements
-There are many things I would like to add to make this project more presentable. User authentication is by far the number one thing for this project because everything else that the app is supposed to do relies on users and sessions. I would like to add functions that allow users to follow other users, functions to search for other users, a function to show your liked posts, edit your profile and edit your posts. So many things could make this app great and I plan to make those changes when I get a free moment.
+There are many things I would like to add to make this project more presentable. The CSS is rough and not mobile responsive. User authentication is by far the number one thing for this project because everything else that the app is supposed to do relies on users and sessions. I would like to add functions that allow users to follow other users, functions to search for other users, a function to show your liked posts, edit your profile and edit your posts. So many things could make this app great and I plan to make those changes when I get a free moment.
+
+
 
 Link to our project hosted on Heroku: https://paws-and-find-front.herokuapp.com/
