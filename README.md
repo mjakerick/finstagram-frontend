@@ -23,4 +23,4 @@ There are many things I would like to add to make this project more presentable.
 
 
 
-Link to our project hosted on Heroku: https://paws-and-find-front.herokuapp.com/
+Link to my project hosted on Heroku: https://mysterious-journey-39787.herokuapp.com/
