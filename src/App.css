@@ -7,6 +7,11 @@
   margin: 0;
 }
 
+.app-content {
+  height: 100%;
+  background-color: lightblue;
+}
+
 .title {
   grid-column-start: 2;
   grid-column-end: 3;
